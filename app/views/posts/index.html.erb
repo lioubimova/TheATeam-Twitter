@@ -1,7 +1,19 @@
-<div class="container">
-  <h1>Twitterchen</h1>
+
+<div id="header">
+  <div style="background-color:#6699ff;padding:15px;">
+  <h1 style="color:red">Twitterchen</h1>
 </div>
+<br>
+<br>
+<div class= "container">
+  <%= link_to "Home", root_path %>
+</div>
+<br>
+<br>
+
 <div class="container-fluid" style="float: right">
+  <br>
+
   <% if @current_user %>
     <%= button_to "Post", new_post_path, :class => "btn btn-primary", method: :get %>
     <%= button_to "Log out", user_session_path(@current_user), :class => "btn btn-primary", method: :delete %>
@@ -40,5 +52,7 @@
   </div>
 <% end %>
 <br>
+<div class="container"
 <%= paginate @posts %>
 <%= page_entries_info @posts %>
+</div>

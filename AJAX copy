@@ -1,24 +1,22 @@
+<h2><%= @user.username %></h2>
 
-<div class=container>
-<br>
-<h1><%= @user.username  %><h1>
-<br>
+<%= link_to "Home", root_path %>
 
-  <h2 style="float: right; margin-right: 30px;" >Followers</h2>
+<div class="container" style="float: right; margin-right: 30px;">
+  <h3>Followers</h3>
   <ul>
     <% @user.followers.each do |x| %>
       <li><%= x.username %></li>
     <% end %>
   </ul>
 </div>
+
 <br>
-<div class=container>
 <% if @current_user.following?(@user) %>
-  <%= button_to "Unfollow", follow_user(@path), remote: true, :class => "btn btn-primary", method: :delete %>
+  <%= button_to "Unfollow", follow_path(@user), remote: true, :class => "btn btn-primary", method: :delete %>
 <% else %>
-  <%= button_to "Follow", follow_user_path, remote: true, :class => "btn btn-primary" %>
+  <%= button_to "Follow", follow_user_path, remote:true, :class => "btn btn-primary" %>
 <% end %>
-</div>
 <br>
 <div class="container">
   <table class="table">
@@ -28,10 +26,7 @@
           <td><%= post.message %></td>
           <td><small>Posted on <%= post.created_at.strftime('%b %e, %l:%M %p') %></small></td>
         </tr>
-
         <% end %>
       </tbody>
   </table>
-  <br>
-  <%= link_to "Home", root_path %>
 </div>
